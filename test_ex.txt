@@ -1,4 +1,5 @@
-!print("test commit")
+<<<<<<< HEAD
+print("test commit")
 dddd
 ddddddd
 ddddd
