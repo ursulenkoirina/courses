@@ -24,9 +24,18 @@ print('Sorted list: \n', sort_list)
 (Подсказка: создавать словарь, где ключи — это слова из текста,
 а в значениях подсчитываем количество «встречаний» этого слова)
 """
+#Solution1
 j = 0
 value_dict = {}
 for i in sort_list:
     j = sort_list.count(i)
     value_dict[i] = j
-    print(value_dict)
+print('Solution1 My dict is : \n', value_dict)
+#Solution2
+value_dict = {}
+for i in sort_list:
+    if i in value_dict:
+        value_dict[i] +=1
+    else:
+        value_dict[i] = 1
+print('Solution2 My dict is : \n', value_dict)

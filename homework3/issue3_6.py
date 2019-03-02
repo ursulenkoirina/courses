@@ -8,7 +8,7 @@ def is_year_leap(year):
     else:
         return False
 
-a = (is_year_leap(2020))
+a = is_year_leap(2020)
 print(a)
 
 """
@@ -33,7 +33,8 @@ print(a)
 def input_value():
     while True:
         line = input("Input world: ")
-        space = line.strip().count(' ')
+        # space = line.strip().count(' ')
+        space = ' ' in line.strip()
         if space != 0:
             print("Your line is contain space in the middle", end='\n')
         else:
@@ -45,7 +46,7 @@ input_value()
 """
  6.4 Пишем функцию, которая попросит ввести число.
 Пока он не введёт правильно, просите его ввести. Функция возвращает введённое число."""
-def number():
+def input_number():
     while True:
         try:
             value = int(input("Input number: "))
@@ -55,7 +56,7 @@ def number():
             print('Your value is not a number! Try again')
     return value
 
-number()
+input_number()
 """
 6.5. Функция принимает три числа a, b, c. Функция должна определить, существует ли треугольник с такими сторонами и если
 существует, то возвращает тип треугольника Equilateral triangle (равносторонний), Isosceles triangle (равнобедренный),
@@ -65,15 +66,16 @@ def triangle_type(a, b, c) :
 
     if (a + b > c) and (b + c > a) and (c + a > b):
         if a == b == c:
-            print('Equilateral triangle')
+            result = 'Equilateral triangle'
         elif a == b or a == c or b == c:
-            print('Isosceles triangle')
+            result = 'Isosceles triangle'
         else:
-            print('Versatile triangle')
+            result = 'Versatile triangle'
     else:
-        print("Not a triangle")
+        result = "Not a triangle"
+    return result
 
-triangle_type(5, 5, 5)
+print(triangle_type(5, 5, 5))
 """
 6.6 Даны четыре действительных числа: x1, y1, x2, y2. Напишите функцию distance(x1, y1, x2, y2), вычисляющую расстояние
 между точкой (x1, y1) и (x2, y2). Считайте четыре действительных числа от пользователя
