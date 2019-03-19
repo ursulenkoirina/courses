@@ -33,21 +33,7 @@ class Test(unittest.TestCase):
 
     def test_no_skills(self):
         self.assertEquals(len(self.a.skills), 0)
-    #
-    # def test_full_name_exception(self):
-    #     self.a.full_name = 'Irina'
-    #     # self.assertTrue('Full Name must be consists of two words')
-    #
-    # def test_full_name_exception(self):
-    #     self.a.age = 2020
-    #     # self.assertTrue('Full Name must be consists of two words')
-    #
-    # def test_age_exception(self):
-    #     self.assertRaises(AssertionError, self.a)
 
-    # def test_1_cannot_add_int_and_str(self):
-    #     with self.assertRaises(AssertionError):
-    #         ITEmployee.ITEmployee(full_name='Irina')
 
 
 if __name__ == "__main__":
