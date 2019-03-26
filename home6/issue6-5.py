@@ -10,30 +10,41 @@
 file1 = open("file3.txt", "r")
 file2 = open("file4.txt", "w")
 file = file1.readlines()
-print(file)
-all_dict = {}
-d = {}
+
+department = []
+new_department = []
+max_salary = 0
+
 for i in file[1:]:
     c = i.split()
+    d = {}
     d['Фамилия'] = c[0]
     d['Имя'] = c[1]
     d['Отдел'] = c[2]
     d['Зарплата'] = c[3]
-    print(d)
-all_dict.update(d)
+    new_department.append(d)
 
-print(all_dict)
+for i in new_department:
+    if i.get('Отдел'):
+        if i.get('Отдел') not in department:
+            department.append(i.get('Отдел'))
+    if int(i.get('Зарплата')) > max_salary:
+        max_salary = int(i.get('Зарплата'))
 
-# max_salary = max(d.values())
+print('Number of departments is: ', len(department))
+print('Max salary is: ', max_salary)
 
-# print(d.values())
-# print(max_salary)
-def max_salary():
-    d_new = []
-    for k, v in d.items():
-        if k == 'Зарплата':
-            print(v)
-            if v not in d_new:
-                d_new.append(v)
-    return d_new
-print(max_salary())
+for j in department:
+    max_salary = 0
+    temp = {}
+    for i in new_department:
+        if j == i.get('Отдел'):
+            if int(i.get('Зарплата')) > max_salary:
+                max_salary = int(i.get('Зарплата'))
+                temp.update(i)
+    print(temp)
+    file2.write(str(temp) + '\n')
+
+#close all files
+file1.close()
+file2.close()
