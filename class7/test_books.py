@@ -27,4 +27,4 @@ class BooksTesting(unittest.TestCase):
 
     def tearDown(self):
         # if self.book_id is not None:
-            requests.delete(f"{self.base_url}/books/" + self.book_id)
+            requests.delete(f"{self.base_url}/books/self.book_id")
