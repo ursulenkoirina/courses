@@ -11,7 +11,8 @@ from modules.user import User
 
 @pytest.fixture()
 def driver():
-    driver = webdriver.Chrome()
+    # driver = webdriver.Chrome()
+    driver = webdriver.Chrome('C:\chromedriver_win32\chromedriver.exe')
     driver.implicitly_wait(5)
     yield driver
     driver.quit()
@@ -19,13 +20,15 @@ def driver():
 
 @pytest.fixture()
 def app(driver):
-    return OxwallApp(driver,base_url="https://demo.oxwall.com/")
+    return OxwallApp(driver, base_url="https://127.0.0.1/oxwall/")
+    # return OxwallApp(driver,base_url="https://demo.oxwall.com/")
 
 
 
 @pytest.fixture()
 def logged_user(app):
-    user = User(username='demo', password='demo', real_name='Demo')
+    # user = User(username='demo', password='demo', real_name='Demo')
+    user = User(username='admin', password='password', real_name='Admin')
     # app.login_as(username='demo', password='demo')
     app.login_as(user)
     yield user
