@@ -1,0 +1,1 @@
+2019-05-19 10:24:54.103000 SEVERE - http://127.0.0.1/oxwall/ow_userfiles/plugins/base/favicon.ico - Failed to load resource: the server responded with a status of 404 (Not Found)

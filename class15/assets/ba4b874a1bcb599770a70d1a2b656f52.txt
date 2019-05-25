@@ -1,0 +1,3228 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" dir="ltr"><head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<title>Oxwall - social networking</title>
+<meta name="description" content="Oxwall community">
+<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-language" content="en">
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/oxwall/ow_static/plugins/base/css/ow.css?5c0ea45a9ac2a" media="all">
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/oxwall/ow_static/themes/simplicity/base.css?5c0ea45a9ac2a" media="all">
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/oxwall/ow_static/plugins/mailbox/css/mailbox.css" media="all">
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1/oxwall/ow_static/plugins/base/css/htmlarea.css" media="all">
+<style media="all">
+
+    #place_components .component {
+        float: left;
+    }
+
+    .view_component div{
+       overflow: hidden;
+    }
+
+ 
+    .ow_newsfeed_line
+    {
+        display: block;
+    }
+ 
+
+textarea.ow_newsfeed_status_input {
+    height: 50px;
+}
+
+textarea.ow_newsfeed_status_input.invitation {
+    height: 20px;
+}
+
+.newsfeed-attachment-preview {
+    width: 95%;
+}
+.ow_side_preloader {
+	float: right;
+	padding: 0px 4px 0px 0px;
+	margin-top: 6px;
+}
+.ow_side_preloader {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+}
+
+ 
+
+    ul.ow_newsfeed {
+        padding: 5px 0px 0px 5px;
+    }
+
+    .ow_newsfeed_avatar {
+        height: 45px;
+        width: 45px;
+        margin-right: -45px;
+        float: left;
+    }
+
+    .ow_newsfeed_avatar img {
+        height: 45px;
+        width: 45px;
+    }
+
+    .ow_newsfeed_body {
+        margin-left: 45px;
+        padding-left: 10px;
+    }
+
+    .ow_newsfeed .ow_newsfeed_item {
+       list-style-image: none;
+        position: relative;
+    }
+
+    .ow_newsfeed_toolbar {
+        float: none;
+    }
+
+    .ow_newsfeed .ow_comments_list {
+        margin-bottom: 0px;
+    }
+
+    .ow_newsfeed_remove {
+        position: absolute;
+        top: 5px;
+        right: 0px;
+        display: none;
+    }
+
+    .ow_newsfeed_body:hover .ow_newsfeed_remove {
+        display: block;
+    }
+
+    .ow_newsfeed_delimiter {
+        border-bottom-width: 1px;
+        height: 1px;
+        margin-bottom: 7px;
+    }
+
+    .ow_newsfeed_doublesided_stdmargin {
+        margin: 14px 0px;
+    }
+
+    .ow_newsfeed_likes {
+        margin-bottom: 3px;
+    }
+
+    .ow_newsfeed_tooltip .tail {
+        padding-left: 25px;
+    }
+
+    .ow_newsfeed_placeholder {
+        height: 30px;
+        background-position: center 5px;
+    }
+
+    .ow_newsfeed_view_more_c {
+        text-align: center;
+    }
+
+    .ow_newsfeed_string {
+    	max-width: 600px;
+    }
+
+    .ow_newsfeed_item_content {
+        min-width: 50px;
+    }
+
+    .ow_newsfeed_item_picture + .ow_newsfeed_item_content {
+        float: left;
+        width: 69%;
+        max-width: 440px;
+    }
+
+    .ow_newsfeed_features {
+        max-width: 450px;
+        overflow: hidden;
+        min-height: 62px;
+    }
+
+    .ow_newsfeed_feedback_counter {
+        padding: 2px 5px;
+    }
+
+    .ow_newsfeed_activity_content {
+        border-top-style: dashed;
+        border-top-width: 1px;
+        padding-top: 3px;
+    }
+
+    .ow_newsfeed_comments .ow_add_comments_form
+    {
+        margin-bottom: 0px;
+    }
+ 
+
+html div.ow_console_list_wrapper
+{
+    min-height: 0px;
+    max-height: 257px;
+}
+
+</style><link rel="shortcut icon" type="image/x-icon" href="http://127.0.0.1/oxwall/ow_userfiles/plugins/base/favicon.ico">
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/jquery-migrate.min.js"></script>
+
+<style type="text/css">
+    .ow_newsfeed_line
+    {
+        display: block;
+    }
+</style></head>
+<!--[if IE 8]><body class="ow ie8 simplicity base_user_dashboard"><![endif]-->
+<!--[if !IE 8]><!--><body class="ow simplicity base_user_dashboard" style=""><!--<![endif]-->
+<div class="ow_page_wrap">
+	<div class="ow_menu_fullpage">
+		<div class="ow_menu_fullpage_wrap"><ul class="ow_main_menu clearfix">
+<li class="base_dashboard active"><a href="http://127.0.0.1/oxwall/dashboard"><span>Dashboard</span></a></li><li class="base_main_menu_index"><a href="http://127.0.0.1/oxwall/index"><span>Main</span></a></li><li class="base_users_main_menu_item"><a href="http://127.0.0.1/oxwall/users"><span>Members</span></a></li><li class="photo_photo"><a href="http://127.0.0.1/oxwall/photo/viewlist/latest"><span>Photo</span></a></li><li class="video_video"><a href="http://127.0.0.1/oxwall/video"><span>Video</span></a></li></ul></div>
+	</div>
+	<div class="ow_site_panel clearfix">
+			<a class="ow_logo ow_left" href="http://127.0.0.1/oxwall/"></a>
+			<div class="ow_nav_btn"></div>
+			<div class="ow_console_right">
+				
+
+<div class="ow_console clearfix">
+    <div class="ow_console_body clearfix">
+        <div class="ow_console_items_wrap">
+                            <div id="console_item_5ce12efca47df" class="ow_console_item ow_console_dropdown ow_console_dropdown_click ow_invitation_list" style="display: none;">
+    <a href="javascript://" class="ow_console_item_link">Invitations</a>
+
+<span style="display: none;" class="ow_count_wrap OW_ConsoleItemCounter">
+    <span class=" ow_count_bg OW_ConsoleItemCounterPlace" style="width: auto;">
+        <span class="ow_count OW_ConsoleItemCounterNumber" style="visibility: hidden; right: 0px;">0</span>
+    </span>
+</span>
+
+            <div id="console_item_5ce12efca47df_content" class="OW_ConsoleItemContent" style="display: none;">
+
+            
+<div class="ow_tooltip  console_tooltip ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                <div class="ow_console_list_wrapper OW_ConsoleListContainer">
+    <div class="ow_nocontent OW_ConsoleListNoContent">No items</div>
+    <ul class="ow_console_list OW_ConsoleList">
+
+    </ul>
+    <div class="ow_preloader_content ow_console_list_preloader OW_ConsoleListPreloader" style="visibility: hidden"></div>
+</div>
+
+
+            
+    </div>
+</div>
+
+        </div>
+    </div>
+                            <div id="console_item_5ce12efcd9390" class="ow_console_item ow_console_dropdown ow_console_dropdown_click ow_friend_request_list" style="display: none;">
+    <a href="javascript://" class="ow_console_item_link">Friend Requests</a>
+
+<span style="display: none;" class="ow_count_wrap OW_ConsoleItemCounter">
+    <span class=" ow_count_bg OW_ConsoleItemCounterPlace" style="width: auto;">
+        <span class="ow_count OW_ConsoleItemCounterNumber" style="visibility: hidden; right: 0px;">0</span>
+    </span>
+</span>
+
+            <div id="console_item_5ce12efcd9390_content" class="OW_ConsoleItemContent" style="display: none;">
+
+            
+<div class="ow_tooltip  console_tooltip ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                <div class="ow_console_list_wrapper OW_ConsoleListContainer">
+    <div class="ow_nocontent OW_ConsoleListNoContent">No items</div>
+    <ul class="ow_console_list OW_ConsoleList">
+
+    </ul>
+    <div class="ow_preloader_content ow_console_list_preloader OW_ConsoleListPreloader" style="visibility: hidden"></div>
+</div>
+
+
+            
+    </div>
+</div>
+
+        </div>
+    </div>
+                            <div id="console_item_5ce12efca6c77" class="ow_console_item ow_console_dropdown ow_console_dropdown_click ow_mailbox_items_list">
+    <a href="javascript://" class="ow_console_item_link">Messages</a>
+
+<span style="display: none;" class="ow_count_wrap OW_ConsoleItemCounter">
+    <span class=" ow_count_bg OW_ConsoleItemCounterPlace" style="width: auto;">
+        <span class="ow_count OW_ConsoleItemCounterNumber" style="visibility: hidden; right: 0px;">0</span>
+    </span>
+</span>
+
+            <div id="console_item_5ce12efca6c77_content" class="OW_ConsoleItemContent" style="display: none;">
+
+            
+<div class="ow_tooltip  console_tooltip ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                <div class="ow_console_list_wrapper OW_ConsoleListContainer">
+    <div class="ow_nocontent OW_ConsoleListNoContent"><center>No items</center></div>
+    <ul class="ow_console_list OW_ConsoleList"></ul>
+    <div class="ow_preloader_content ow_console_list_preloader OW_ConsoleListPreloader" style="visibility: hidden"></div>
+</div>
+
+<div class="ow_console_messages_btns clearfix">
+    <div class="ow_console_messages_viewall"><a href="http://127.0.0.1/oxwall/messages">View All</a></div>
+    <div class="ow_console_messages_send"><a href="javascript://" id="mailboxConsoleListSendMessageBtn">Send Message</a></div></div>
+            
+    </div>
+</div>
+
+        </div>
+    </div>
+                            <div id="console_item_5ce12efcd7f91" class="ow_console_item ow_console_dropdown ow_console_dropdown_click ow_notification_list">
+    <a href="javascript://" class="ow_console_item_link">Notifications</a>
+
+<span style="display: none;" class="ow_count_wrap OW_ConsoleItemCounter">
+    <span class=" ow_count_bg OW_ConsoleItemCounterPlace" style="width: auto;">
+        <span class="ow_count OW_ConsoleItemCounterNumber" style="visibility: hidden; right: 0px;">0</span>
+    </span>
+</span>
+
+            <div id="console_item_5ce12efcd7f91_content" class="OW_ConsoleItemContent" style="display: none;">
+
+            
+<div class="ow_tooltip  console_tooltip ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                <div class="ow_console_list_wrapper OW_ConsoleListContainer">
+    <div class="ow_nocontent OW_ConsoleListNoContent">No items</div>
+    <ul class="ow_console_list OW_ConsoleList">
+
+    </ul>
+    <div class="ow_preloader_content ow_console_list_preloader OW_ConsoleListPreloader" style="visibility: hidden"></div>
+</div>
+
+
+            
+    </div>
+</div>
+
+        </div>
+    </div>
+                            <div id="console_item_5ce12efca0901" class="ow_console_item ow_console_dropdown ow_console_dropdown_hover">
+    <a href="http://127.0.0.1/oxwall/user/admin" class="ow_console_item_link">Admin</a>
+<span class="ow_console_more"></span>
+            <div id="console_item_5ce12efca0901_content" class="OW_ConsoleItemContent" style="display: none;">
+
+            
+<div class="ow_tooltip  console_tooltip ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                <ul class="ow_console_dropdown">
+                        <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/user/admin">My Profile</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/profile/edit">Profile Edit</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/profile/preference">My Preferences</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/moderation">Moderation Tools</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/email-notifications">Mail Notifications</a>
+                </div>
+            </li>
+        
+                    <li><div class="ow_console_divider"></div></li>
+                                <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/sign-out">Sign Out</a>
+                </div>
+            </li>
+        
+            </ul>
+            
+    </div>
+</div>
+
+        </div>
+    </div>
+                            <div id="console_item_5ce12efc9f00d" class="ow_console_item ow_console_dropdown ow_console_dropdown_hover">
+    <a href="http://127.0.0.1/oxwall/admin" class="ow_console_item_link">Admin</a>
+<span class="ow_console_more"></span>
+            <div id="console_item_5ce12efc9f00d_content" class="OW_ConsoleItemContent" style="display: none;">
+
+            
+<div class="ow_tooltip  console_tooltip ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                <ul class="ow_console_dropdown">
+                        <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/admin">Admin Dashboard</a>
+                </div>
+            </li>
+        
+                    <li><div class="ow_console_divider"></div></li>
+                                <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/admin/appearance/customize">Edit Theme</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/admin/users/">Manage Users</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/admin/pages">Manage Pages</a>
+                </div>
+            </li>
+                    <li class=" ow_dropdown_menu_item ow_cursor_pointer">
+                <div class="ow_console_dropdown_cont">
+                    <a href="http://127.0.0.1/oxwall/admin/plugins">Manage Plugins</a>
+                </div>
+            </li>
+        
+            </ul>
+            
+    </div>
+</div>
+
+        </div>
+    </div>
+                    </div>
+    </div>
+</div>
+			</div>
+			<div class="ow_menu_wrap"><div class="ow_responsive_menu ow_left" id="rm-5ce12efd0f801">
+    <ul class="ow_main_menu clearfix" data-el="list"><li class="base_dashboard active" data-el="item"> <a href="http://127.0.0.1/oxwall/dashboard"> <span>Dashboard</span> </a> </li><li class="base_main_menu_index" data-el="item"> <a href="http://127.0.0.1/oxwall/index"> <span>Main</span> </a> </li><li class="base_users_main_menu_item" data-el="item"> <a href="http://127.0.0.1/oxwall/users"> <span>Members</span> </a> </li><li class="photo_photo" data-el="item"> <a href="http://127.0.0.1/oxwall/photo/viewlist/latest"> <span>Photo</span> </a> </li><li class="video_video" data-el="item"> <a href="http://127.0.0.1/oxwall/video"> <span>Video</span> </a> </li></ul>
+    <div class="ow_menu_more_wrap ow_cursor_pointer">
+        <div class="ow_menu_more">
+            <div class="ow_menu_more_cont">
+                <ul class="ow_menu_more_list" data-el="more-list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+	</div>
+	<div class="ow_header">
+        <div class="ow_header_pic"></div>
+	</div>
+	
+	<div class="ow_page_padding">
+		<div class="ow_page_container">
+			<div class="ow_canvas">
+				<div class="ow_page ow_bg_color clearfix">
+					<h1 class="ow_stdmargin ow_ic_house">My Dashboard</h1>					<div class="ow_content">
+						
+						
+
+
+
+
+
+
+<div class="ow_stdmargin" id="place_sections">
+
+    <div class="clearfix">
+
+        <div class="place_section top_section">
+
+            
+        </div>
+
+        <div class="clearfix" style="overflow: hidden;">
+
+            <div class="ow_left place_section left_section ow_superwide">
+
+                                                            <div class="ow_dnd_widget dashboard-NEWSFEED_CMP_MyFeedWidget">
+
+    <div class="ow_box_cap_empty ow_dnd_configurable_component clearfix">
+	<div class="ow_box_cap_right">
+		<div class="ow_box_cap_body">
+			<h3 class="ow_ic_clock">Newsfeed</h3>
+		</div>
+	</div>
+</div>
+<div class="ow_box_empty ow_stdmargin clearfix dashboard-NEWSFEED_CMP_MyFeedWidget ow_break_word">
+
+
+        
+<div id="feed1">
+            <div class="ow_smallmargin">
+            
+
+<form id="form_wyjyk29e" method="post" action="http://127.0.0.1/oxwall/newsfeed/ajax/status-update/" name="newsfeed_update_status">
+<input name="form_name" id="input_ko7evy5o" type="hidden" value="newsfeed_update_status">
+<input name="csrf_token" id="input_rojezy6e" type="hidden" value="MTU1ODI2MTQ5N2tZWmVURTkyd29RT0I0NXlTWXNlOEVnMk5vak9SNGt5">
+<input name="attachment" id="input_mib1vasi" type="hidden" value="">
+<input name="feedType" id="input_b18u9ari" type="hidden" value="user">
+<input name="feedId" id="input_dosoz2r2" type="hidden" value="1">
+<input name="visibility" id="input_gi6usura" type="hidden">
+
+	<div class="form_auto_click">
+		<div class="clearfix">
+			<div class="newsfeed_update_status_picture">
+			</div>
+			<div class="newsfeed_update_status_info">
+				<div class="ow_smallmargin"><textarea name="status" id="input_sedexyto" class="ow_newsfeed_status_input" placeholder="What’s happening?"></textarea></div>
+			</div>
+		</div>
+		
+                <div id="attachment_preview_nfa-feed15ce12ef9c2233-oembed" class="newsfeed-attachment-preview ow_smallmargin" style="display: none;"></div>
+                
+                    <div id="attch_preview_nfa-feed15ce12ef9c2233" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+
+                
+            
+		<div class="ow_submit_auto_click" style="text-align: left; display: block;">
+			<div class="clearfix ow_status_update_btn_block">
+				<span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="submit" value="Send" id="input_k3qulaha" name="save" class=""></span></span></span>
+                                <span class="ow_attachment_icons">
+                                    <span class="ow_attachments" id="nfa-feed15ce12ef9c2233-btn-cont">
+                                        <span class="buttons clearfix">
+                                            <a class="image" id="nfa-feed15ce12ef9c2233-btn" href="javascript://"><input class="mlt_file_input" type="file" name="attachment"></a>
+                                        </span>
+                                    </span>
+                                </span>
+				<span class="ow_side_preloader_wrap"><span class="ow_side_preloader ow_inprogress newsfeed-status-preloader" style="display: none;"></span></span>
+			</div>
+		</div>
+	</div>
+
+</form>
+        </div>
+        
+    <ul class="ow_newsfeed ow_smallmargin"><li id="action-feed1-387" class="ow_newsfeed_item  " data-entity-type="user-status" style="">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">!@#%^&amp;
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/387?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">within 1 minute</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3813018" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3813018">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3813018"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3813018" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_381_ylymo62k" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3813018"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+        <li style="display: none;" class="ow_newsfeed_item ow_nocontent newsfeed_nocontent">No items</li>
+
+    
+
+<li id="action-feed1-386" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">Привіт, світ!
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/386?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">within 1 minute</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3803367" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3803367">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3803367"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3803367" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_380_lak3bad3" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3803367"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-385" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">Welcome! 123456789
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/385?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">1 minute ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3793367" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3793367">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3793367"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3793367" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_379_k4je6eke" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3793367"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-384" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">ӻӸҗ҈UѶӖӤиДѧ}еюлGWӥ:ЈӼк^҈НЇӯѶh;҉ћѨҐќӧҀzХTҩїЧҗѩѨзӀѣЩ37оѦQqDюKYҥѶдeѯҨEнХпьѤҘГ~ѝѫ!&gt;ЙҞ%ҧђӂӢѩ
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/384?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">4 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3783367" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3783367">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3783367"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3783367" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_378_l1b181sa" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3783367"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-383" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">!@#%^&amp;
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/383?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">4 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3773367" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3773367">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3773367"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3773367" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_377_kizipabu" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3773367"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-382" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">Привіт, світ!
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/382?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">5 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3763367" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3763367">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3763367"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3763367" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_376_siq3519a" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3763367"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-381" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">Welcome! 123456789
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/381?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">6 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3753367" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3753367">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3753367"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3753367" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_375_r3w1sisu" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3753367"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-380" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">Привіт!
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/380?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">7 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3749494" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3749494">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3749494"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3749494" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_374_3l1w3tu8" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3749494"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-379" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">New 1234098765!
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/379?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">8 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3739494" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3739494">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3739494"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3739494" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_373_2zod474r" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3739494"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-378" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">!@#%^&amp;
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/378?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">8 minutes ago</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3729494" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3729494">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3729494"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3729494" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_372_4syryqyv" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3729494"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+    
+
+<li id="action-feed1-377" class="ow_newsfeed_item  " data-entity-type="user-status">
+	<div class="clearfix">
+            
+	    	        <div class="ow_newsfeed_avatar">
+                    
+                    
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div>
+	        </div>
+	    
+	    <div class="ow_newsfeed_body">
+	        <div class="ow_newsfeed_context_menu_wrap">
+                    <div class="ow_newsfeed_context_menu">
+                       <div class="ow_context_action_block clearfix ">
+            <div class="ow_context_action">
+									<span class="ow_context_more"></span>
+
+			<!-- div class="ow_context_action_wrap" -->
+			    			    
+				
+<div class="ow_tooltip  ow_newsfeed_context_tooltip ow_small ow_tooltip_top_right">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+				<ul class="ow_context_action_list ow_border">
+									<li><a href="javascript://" class="newsfeed_remove_btn owm_red_btn" data-confirm-msg="Are you sure?">Delete post</a></li>
+								</ul>
+                
+    </div>
+</div>
+			<!-- /div -->
+			        </div>
+    </div>
+                    </div>
+                                            <div class="ow_newsfeed_string ow_small ow_smallmargin">
+                           <a href="http://127.0.0.1/oxwall/user/admin"><b>Admin</b></a>
+                                                      
+                        </div>
+                    
+                                            <div class="ow_newsfeed_content ow_smallmargin">Привіт!
+</div>
+                                    </div>
+
+            
+            <div class="ow_newsfeed_btns ow_small ow_remark clearfix">
+
+                <a href="http://127.0.0.1/oxwall/newsfeed/377?ft=my&amp;fi=1" class="ow_nowrap create_time ow_newsfeed_date ow_small">Yesterday, 09:02</a>
+
+                <div class="ow_newsfeed_left">
+                    <span class="ow_newsfeed_control">
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_comment_btn_cont ">
+                                <span class="ow_miniic_comment newsfeed_comment_btn "></span>
+                            </span><span class="newsfeed_counter_comments">0</span>
+                        </span>
+                        
+                        
+                                                <span class="ow_newsfeed_btn_wrap ">
+                            <span class="ow_miniic_control ow_cursor_pointer newsfeed_like_btn_cont ">
+                                <span class="ow_miniic_like newsfeed_like_btn "></span>
+                            </span><span class="newsfeed_counter_likes">0</span>
+                        </span>
+
+                        <div class="ow_newsfeed_string">
+                            <div class="newsfeed_likes_string" style="display: none">
+                                
+                            </div>
+                        </div>
+                                            </span>
+
+                </div>
+            </div>
+
+                            <div style="display: none" class="newsfeed-comments-cont ow_newsfeed_features">
+                    
+<div class="ow_tooltip  ow_newsfeed_tooltip ow_add_comments_form ow_small">
+    <div class="ow_tooltip_tail">
+        <span></span>
+    </div>
+    <div class="ow_tooltip_body">
+        
+                                                    <div class="ow_newsfeed_comments">
+                                <div id="comments-user-status3719494" class="ow_comments_mipc">
+               <div class="comments_list_cont">
+	   <div id="comments-list-user-status3719494">
+    <div class="ow_comments_list">
+                                    </div>
+    </div>
+
+   </div>
+            <div class="ow_comments_form_wrap_pre" style="display:none;"></div>
+      <div class="ow_comments_form_wrap">
+      <div class="ow_comments_input_wrap clearfix">
+            <div class="ow_comments_item_picture">
+<div class="ow_avatar">
+<a href="http://127.0.0.1/oxwall/user/admin"><img alt="Admin" title="Admin" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" style="max-width: 100%;"></a>
+</div></div>
+            <div class="ow_comments_item_info clearfix"><span class="comment_add_arr"></span>
+                <div class="ow_comments_input">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a href="javascript://" class="image" id="bCcontuser-status3719494"><input class="mlt_file_input" type="file" name="attachment"></a>
+                        </div>
+                    </span>
+                    <textarea id="ctauser-status3719494" class="comments_fake_autoclick" placeholder="Comment here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="attch_preview_user-status_371_49oz4keb" class="ow_photo_attachment_preview ow_smallmargin" style="display:none;">
+    <a href="javascript://" class="ow_photo_attachment_pic ow_attachment_preload loading">
+        <div class="ow_attachment_delete ow_miniic_delete">
+        </div>
+    </a>
+</div>
+        <div id="attchuser-status3719494"></div>
+        
+        <div class="clearfix comments_hidden_btn" style="display:none;">
+        <span class="ow_attachment_btn">
+<span class="ow_button"><span class=""><input type="button" value="Send"></span></span></span>
+        </div>
+        
+        </div>
+          
+   </div>
+                            </div>
+                                            
+    </div>
+</div>
+                </div>
+            
+	    </div>
+            
+            
+	</div>
+
+                    <div style="display: none" class="newsfeed-item-delim ow_border ow_newsfeed_delimiter ow_newsfeed_doublesided_stdmargin"></div>
+        </li>
+
+    </ul>
+    
+                <div class="ow_newsfeed_view_more_c">
+                
+<span class="ow_button"><span class=" ow_newsfeed_view_more ow_ic_down_arrow"><input type="button" value="View More" class="ow_newsfeed_view_more ow_ic_down_arrow"></span></span>
+            </div>
+    </div>
+
+
+    
+</div>
+    
+</div>
+                                    
+            </div>
+
+            <div class="ow_right place_section right_section ow_supernarrow">
+
+                                                            
+                                            <div class="ow_dnd_widget dashboard-BASE_CMP_WelcomeWidget">
+
+    <div class="ow_box_cap_empty ow_dnd_configurable_component clearfix">
+	<div class="ow_box_cap_right">
+		<div class="ow_box_cap_body">
+			<h3 class="ow_ic_info">Welcome!</h3>
+		</div>
+	</div>
+</div>
+<div class="ow_box_empty ow_stdmargin clearfix dashboard-BASE_CMP_WelcomeWidget ow_break_word">
+
+
+        <div class="ow_custom_html_widget">
+    <p>
+Welcome to our site! Here are a few quick links that you need to start your way around:
+</p>
+<ul class="ow_regular">
+<li><a id="welcomeWinget_loadAvatarChangeCmp" href="javascript://">Change avatar</a></li>
+
+<li><a href="javascript://" onclick="addNewPhoto5ce12efc86011();">Upload photos</a></li>
+
+<li><a href="profile/edit">Change profile details</a></li>
+
+<li><a href="my-profile">Preview/rearrange my profile</a></li>
+
+<li><a href="users">Look who's in</a></li>
+
+</ul>
+
+<p>
+Feel free to participate in our community!
+</p>
+</div>
+
+    
+</div>
+    
+</div>
+                                            
+                                    
+            </div>
+
+         </div>
+
+        <div class="place_section bottom_section">
+
+            
+        </div>
+
+    </div>
+
+</div>
+
+
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="ow_footer">
+	<div class="ow_canvas">
+		<div class="ow_page clearfix">
+			<div class="ow_footer_menu">
+	<a href="http://127.0.0.1/oxwall/terms-of-use">Terms of use</a> | 	<a href="http://127.0.0.1/oxwall/privacy-policy">Privacy Policy</a> | 	<a href="http://www.oxwall.org/" target="_blank">Community software</a> | 	<a href="http://127.0.0.1/oxwall/mobile-version">Mobile version</a></div>
+			<div class="ow_copyright">
+				© Copyright Oxwall
+			</div>
+			<div style="float:right;padding-bottom: 30px;">
+				<a href="https://developers.oxwall.com/" target="_blank" title="Powered by Oxwall Community Software"><img src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/powered-by-oxwall.png" alt="Oxwall Community Software"></a>
+			</div>
+		</div>
+	</div>
+</div>    
+
+<div style="display: none" id="floatbox_prototype">
+
+    
+    <div class="default">
+        <div class="floatbox_canvas floatbox_default">
+            <div class="floatbox_preloader_container">
+                <div class="floatbox_preloader ow_floatbox_preloader"></div>
+            </div>
+
+            <div class="floatbox_container">
+				<div class="ow_bg_color">
+					<div class="floatbox_header">
+						<div class="clearfix floatbox_cap">
+							<h3 class="floatbox_title"></h3>
+							<div class="ow_box_cap_icons clearfix">
+								<a title="close" class="ow_ic_delete close" href="javascript://"></a>
+							</div>
+					   </div>
+					</div>
+					<div class="floatbox_body"></div>
+					<div class="floatbox_bottom"></div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="empty">
+        <div class="floatbox_canvas floatbox_empty">
+            <div class="floatbox_preloader_container">
+                <div class="floatbox_preloader ow_floatbox_preloader"></div>
+            </div>
+
+            <div class="floatbox_container">
+				<div class="ow_bg_color">
+					<div class="floatbox_header">
+						<div class="ow_box_cap_icons clearfix">
+							<a title="close" class="ow_ic_delete close" href="javascript://"></a>
+						</div>
+					</div>
+					<div class="floatbox_body"></div>
+					<div class="floatbox_bottom"></div>
+				</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+	$(window).scroll(function() {
+	var $menuwrappos = $('.ow_menu_wrap').offset().top;
+    if ($(this).scrollTop() > $menuwrappos) { 
+        $('.ow_page_wrap').addClass('ow_hidden_menu');
+    }
+    else {
+    	$('.ow_page_wrap').removeClass('ow_hidden_menu');
+    }
+	});
+	$('.ow_nav_btn').click(function() {
+    	if ($('body').hasClass('ow_menu_active')) {
+    		$('body').removeClass('ow_menu_active');
+    	}
+    	else {
+    		$('body').addClass('ow_menu_active');
+    	}
+    })
+    $('.ow_menu_fullpage_wrap a').click(function() {
+    	$('body').removeClass('ow_menu_active');
+    })
+</script>
+<div class="ow_chat_cont">
+    <div class="ow_chat_wrap">
+        <div class="ow_chat">
+            <div class="ow_puller ui-draggable ui-draggable-disabled" style="position: relative;"></div>
+            <div class="ow_chat_block_wrap ow_border">
+                <div class="ow_chat_block">
+                    <form id="form_ym2s2r2t" method="post" action="" name="im_user_settings_form">
+<input name="form_name" id="input_1badakub" type="hidden" value="im_user_settings_form">
+<input name="csrf_token" id="input_47yk264l" type="hidden" value="MTU1ODI2MTUwMHlQWVFlWEViMkRveE9yNFR5YllyZWxFTTJEb0hPUDRK">
+<input name="user_id" id="input_39a5u91l" type="hidden" value="1">
+
+                    <div class="ow_chat_block_main">
+                        <div class="ow_top_panel">
+                            <div class="ow_count_block">
+                                <a href="javascript://" class="btn2_panel">
+                                    <span class="ow_btn_sort_users" id="mailboxSortUsersPreference" title="Show all users"><span class="ow_btn_sort_online"></span></span>
+                                    <span class="ow_count_txt">Chat</span>
+                                <span class="ow_count_wrap">
+									<span class="ow_count_bg totalUserOnlineCountBackground">
+										<span class="ow_count totalUserOnlineCount">0</span>
+									</span>
+								</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ow_chat_in_block">
+                            <div class="ow_chat_search">
+                                <span><input name="im_find_contact" id="im_find_contact" type="text" placeholder="Find Contact"><a href="javascript://" class="ow_btn_close_search" id="im_find_contact_close_btn_search"></a></span>
+                            </div>
+
+                            <div class="ow_chat_list showOnlineOnly" style="width: 245px;">
+                                
+                                <ul></ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="ow_bot_panel">
+                        <div class="ow_count_block">
+                            <a href="javascript://" class="btn2_panel"><span class="ow_count_txt">Chat</span>
+                                <span class="ow_count_wrap">
+                                    <span class="ow_count_bg totalUserOnlineCountBackground">
+                                        <span class="ow_count totalUserOnlineCount">0</span>
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                        <a href="javascript://" class="ow_btn_sound" id="mailboxSoundPreference" title="Silent mode: On"><span></span></a>
+                    </div>
+                    
+</form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="ow_chat_prototypes" style="display: none;">
+
+    <div id="ow_chat_list_proto">
+        <ul>
+            <li>
+                <a href="javascript://" class="clearfix ow_chat_item">
+                    <span class="ow_chat_item_photo_wrap">
+                        <span class="ow_chat_item_photo">
+                            <span class="ow_chat_in_item_photo"><img src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" width="32px" height="32px" alt="" id="contactItemAvatarUrl"></span>
+                        </span>
+                    </span>
+                    <span class="ow_chat_item_author">
+                        <span class="ow_chat_in_item_author" id="contactItemDisplayName"></span>
+                    </span>
+                    <span class="ow_count_wrap ow_count_active" style="display: none;"><span class="ow_count">0</span></span>
+                    <div class="ow_chat_status" id="contactProfileStatus"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="ow_chat_dialog_wrap" id="dialogsContainer">
+
+    <div class="ow_chat_selector ow_hidden">
+        <div class="ow_chat_block">
+            <div class="ow_selector_panel">
+                <a class="ow_btn_dialogs" href="javascript://"><span></span></a>
+                <span class="ow_dialog_count">0</span>
+                <span class="ow_count_wrap" style="display: none;">
+                    <span class="ow_count_bg ow_count_active">
+                        <span class="ow_count">0</span>
+                    </span>
+                </span>
+            </div>
+            <div class="ow_chat_selector_list ow_tooltip ow_tooltip_bottom_left ow_hidden">
+                <div class="ow_tooltip_body">
+                    <ul class="ow_chat_selector_items"></ul>
+                </div>
+                <div class="ow_tooltip_tail"><span></span></div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ----------------------MAILBOX SEND NEW MESSAGE--------------------------- -->
+<div class="ow_chat_dialog ow_mailchat_new_message " id="newMessageWindow">
+    <div class="ow_chat_block ow_mailchat_select_user_wrap">
+        <form id="mailbox-new-message-form" method="post" action="http://127.0.0.1/oxwall/mailbox/ajax/new-message/" name="mailbox-new-message-form" enctype="multipart/form-data">
+<input name="form_name" id="input_e7eje529" type="hidden" value="mailbox-new-message-form">
+<input name="csrf_token" id="input_ywym2mej" type="hidden" value="MTU1ODI2MTUwMFVaSWdBZ3VwaVRhUDNMMW1VVElNQWp1VmlnYXQzQjFx">
+<input name="uid" id="input_36i5uq1v" type="hidden" value="mailbox_new_message_elyqomo9">
+
+        <!-- ---- NEW MESSAGE CAP ---->
+        <!-- ----------------------- SELECTED USER CAP --------------------------- -->
+        <div class="ow_mailchat_selected_user ow_author_block clearfix">
+            <div aria-disabled="false" style="position: absolute;" class="ow_puller ui-draggable"></div>
+            <a href="javascript://" target="_blank" class="ow_chat_in_item_author_href ow_chat_in_item_photo_wrap" id="userFieldProfileLink">
+                <span class="ow_chat_in_item_photo"><img title="" alt="" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" height="32px" width="32px" id="userFieldAvatar"></span>
+            </a>
+            <a href="javascript://" class="ow_chat_item_author_wrap" id="newMessageWindowMinimizeBtn">
+                <span class="ow_chat_item_author">
+                    <span class="ow_chat_message_to">New message to</span>
+                    <span class="ow_chat_in_item_author" id="userFieldDisplayname"></span>
+                </span>
+                <span class="ow_mailchat_delete_receiver" id="userFieldDeleteBtn"></span>
+            </a>
+            <a class="ow_btn_close" id="newMessageWindowCloseBtn" href="javascript://"><span></span></a>
+        </div>
+        <!-- ----------------------- UNSELECTED USER CAP --------------------------- -->
+        <div class="ow_mailchat_select_user ow_author_block">
+            <div aria-disabled="false" style="position: absolute;" class="ow_puller ui-draggable"></div>
+            <input name="opponentId" id="input_ew49on27" type="hidden" class="userFieldHidden" placeholder="To">
+<input name="mailbox_new_message_user" id="mailbox_new_message_user" type="text" class="invitation userFieldInputControl" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="To">
+<div style="display: none;" class="ow_mailchat_autocomplete" id="userFieldAutocompleteControl">
+    <div class="ow_mailchat_autocomplete_inner">
+        <ul style="display: block;" id="userFieldUserList">
+            <li class="clearfix" style="display: none;" id="userFieldUserListItem-notfound">
+                <span class="ow_chat_user_not_found">User not found</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<ul style="display: none;" id="userFieldUserListPrototype">
+    <li style="display: none;" id="userFieldUserListItemPrototype" class="userFieldUserListItem">
+        <a class="clearfix ow_chat_item" href="javascript://">
+            <span class="ow_chat_item_photo_wrap">
+                <span class="ow_chat_item_photo">
+                    <span class="ow_chat_in_item_photo"><img width="32px" height="32px" alt="" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" id="userFieldUserListItemAvatarUrl"></span>
+                </span>
+            </span>
+            <span class="ow_chat_item_author">
+                <span class="ow_chat_in_item_author" id="userFieldUserListItemUsername"></span>
+            </span>
+        </a>
+    </li>
+</ul>
+
+            <a href="javascript://" class="ow_chat_minimize_btn" id="newMessageWindowUnselectedCapMinimizeBtn"></a>
+            <a class="ow_btn_close" id="newMessageWindowUnselectedCapCloseBtn" href="javascript://"><span></span></a>
+            <div class="ow_mailchat_new_message_title">New message</div>
+        </div>
+        <!-- ----------------------- END OF USER CAP --------------------------- -->
+        <!-- ---- END OF NEW MESSAGE CAP ---->
+        <div class="ow_chat_subject_block">
+            <input name="subject" id="input_3b3bigip" type="text" placeholder="Subject" class="newMessageWindowSubjectInputControl">
+        </div>
+        <div class="ow_chat_mailchat_inputarea">
+            <div class="jhtmlarea ow_smallmargin" style="width: 95%;"><div class="toolbar clearfix"><ul style="display: none;"><li style="display: none;"><a href="javascript://" class="bold" title="Bold"></a></li><li style="display: none;"><a href="javascript://" class="italic" title="Italic"></a></li><li style="display: none;"><a href="javascript://" class="underline" title="Underline"></a></li><li style="display: none;"><a href="javascript://" class="link" title="Insert Link"></a></li></ul></div><div class="input_ws_cont" style="display: none;"><iframe style="height: 148px; width: 99%;"></iframe></div><textarea name="message" id="input_1lukuviq" placeholder="Message" class="newMessageWindowMessageInputControl" style="display: inline-block;"></textarea></div>
+                        <div class="ow_file_attachment_preview clearfix">
+            <div id="mailbox_new_message_elyqomo9">
+    <div class="ow_file_attachment_preview clearfix"></div>
+    </div>
+            </div>
+                        <div class="ow_file_attachment_preview clearfix" id="newMessageWindowEmbedAttachmentsBlock"></div>
+            <div class="ow_chat_mailchat_buttons clearfix">
+                <span class="ow_attachment_btn">
+                    
+<span class="ow_button"><span class=""><input type="submit" value="Send" id="input_yk2serod" name="send"></span></span>
+                </span>
+                                <span class="ow_attachment_icons">
+                    <div class="ow_attachments">
+                        <span class="buttons clearfix">
+                            <a class="attach" href="javascript://" title="Attach" id="newMessageWindowAttachmentsBtn"><input class="mlt_file_input" type="file" multiple="" name="ow_file_attachment[]"></a>
+                        </span>
+                    </div>
+                </span>
+                            </div>
+            
+        </div>
+
+        
+</form>
+    </div>
+</div>
+<!-- -----------------------END OF SEND NEW MESSAGE---------------------------- -->
+    </div>
+
+<div id="im_sound_player_audio_container" style="position: fixed; left: -1000px; top: -1000px;">
+    <audio id="im_sound_player_audio" src="http://127.0.0.1/oxwall/ow_static/plugins/mailbox/sound/receive.mp3"></audio>
+</div>
+
+<div id="mailbox_prototypes" style="display: none;">
+
+    <ul id="ow_chat_selector_items_proto">
+        <li class="ow_chat_selector_item ow_sets_button ow_hidden">
+            <a href="javascript://" id="chatSelectorContactItemDisplayName"></a>
+            <span class="ow_count_wrap">
+                <span class="ow_count_bg ow_count_active" style="display: none;" id="chatSelectorContactItemCounterBlock">
+                    <span class="ow_count" id="chatSelectorContactItemCounter">0</span>
+                </span>
+            </span>
+        </li>
+    </ul>
+
+    <div class="ow_chat_dialog" id="dialogPrototypeBlock">
+        <div class="ow_chat_block">
+            <div class="ow_author_block ow_chat_hover clearfix">
+                <div class="ow_vertical_puller"></div>
+                <div class="ow_diagonal_puller"></div>
+                <div class="ow_horizontal_puller"></div>
+                <a href="javascript://" target="_blank" class="ow_chat_in_item_author_href ow_chat_in_item_photo_wrap" id="dialogProfileUrl">
+                    <span class="ow_chat_in_item_photo"><img title="" alt="" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" height="32px" width="32px" id="dialogProfileAvatarUrl"></span>
+                </a>
+                <a href="javascript://" class="ow_chat_item_author_wrap" id="dialogMinimizeMaximizeBtn">
+                    <span class="ow_chat_item_media_buttons ow_left" data-type="media_buttons"></span>
+                    <span class="ow_chat_item_author">
+                        <span class="ow_chat_in_item_author clearfix" id="dialogProfileDisplayName"></span>
+                        <div class="ow_chat_status" id="dialogProfileStatus"></div>
+                    </span>
+                </a>
+                <a class="ow_btn_close" href="javascript://" id="dialogCloseBtn"><span></span></a>
+            </div>
+            <!--<div class="ow_chat_disabled_subject_block" id="dialogSubjectBlock">-->
+                <!--<span id="dialogSubject"></span>-->
+            <!--</div>-->
+            <div class="ow_chat_in_dialog_wrap">
+                <div style="display: none;" class="ow_dialog_date_cap sticky" id="dialogStickyDateCapBlock">
+                    <span id="dialogStickyDateCap"></span>
+                </div>
+                <div class="ow_chat_in_dialog">
+                    <div class="ow_dialog_items_wrap" id="dialogLog"></div>
+                    <div class="ow_chat_preloader" id="dialogPreloader"></div>
+                </div>
+            </div>
+                        <div class="ow_chat_message_block">
+                <div class="ow_chat_message" id="dialogMessageFormBlock">
+                    <span class="ow_attachment_icons">
+                        <div class="ow_attachments clearfix">
+                            <a class="attach" href="javascript://" id="dialogAttachmentsBtn"></a>
+                        </div>
+                    </span>
+                    <textarea id="dialogTextarea" placeholder="Text Message"></textarea>
+                    <a href="javascript://" class="ow_chat_attach_btn"></a>
+                </div>
+            </div>
+            <div class="ow_chat_message_block" style="display: none;" id="dialogUserIsUnreachable">
+                <span style="padding: 8px; text-align: center; display:block;" id="dialogUserIsUnreachableText">User you are trying to contact is suspended.</span>
+            </div>
+                    </div>
+    </div>
+
+
+    <div class="clearfix" id="dialogChatMessagePrototypeBlock">
+        <div class="ow_dialog_item">
+            <div class="ow_dialog_in_item " id="dialogMessageWrapper">
+                <p id="dialogMessageText">...</p>
+            </div><i></i>
+        </div>
+    </div>
+
+    <div class="clearfix" id="dialogSysMessagePrototypeBlock"></div>
+
+    <div class="clearfix ow_dialog_item_mailchat" id="dialogMailMessagePrototypeBlock">
+        <span class="ow_chat_item_photo_wrap">
+            <span class="ow_chat_item_photo">
+                <span class="ow_chat_in_item_photo"><img width="32px" height="32px" alt="" src="http://127.0.0.1/oxwall/ow_static/themes/simplicity/images/no-avatar.png" id="dialogMessageAvatarUrl"></span>
+            </span>
+        </span>
+        <div class="ow_dialog_item_mailchat_text" id="dialogMessageText"></div>
+    </div>
+
+    <div class="clearfix" id="dialogTimeBlockPrototypeBlock">
+        <div class="ow_time_block">
+            <p><span class="ow_time_text"></span><span></span></p>
+        </div>
+    </div>
+
+    <div class="ow_dialog_date_cap dialogMessageGroup" id="dialogDateCapBlock">
+        <span id="dialogDateCap"></span>
+    </div>
+
+    <div class="ow_mailbox_message_content_attach clearfix" id="conversationFileAttachmentContentBlockPrototype"></div>
+
+    <div id="dialogEmbedLinkBlockPrototype">
+        <div class="ow_dialog_item even">
+            <div class="ow_dialog_in_item" id="dialogMessageWrapper">
+                <p id="dialogMessageText"></p>
+                <div class="ow_video_attachment_preview loading_content"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="conversationFileAttachmentBlockPrototype">
+        <div class="ow_file_attachment_info">
+            <a class="ow_file_attachment_name" target="_blank" href="javascript://" id="conversationFileAttachmentFileName"></a><span class="ow_file_attachment_size ow_small" style="display: inline-block;" id="conversationFileAttachmentFileSize"></span>
+        </div>
+    </div>
+</div><script type="text/javascript">
+window.htmlAreaData = {"editorCss":"http:\/\/127.0.0.1\/oxwall\/ow_static\/plugins\/base\/css\/htmlarea_editor.css","themeImagesUrl":"http:\/\/127.0.0.1\/oxwall\/ow_static\/themes\/simplicity\/images\/","imagesUrl":"http:\/\/127.0.0.1\/oxwall\/base\/media-panel\/index\/pluginKey\/blog\/id\/__id__\/","labels":{"buttons":{"bold":"Bold","italic":"Italic","underline":"Underline","orderedlist":"Insert Ordered List","unorderedlist":"Insert Unordered List","link":"Insert Link","image":"Insert Image","video":"Insert Video","html":"Insert HTML","more":"More","switchHtml":"Show\/Hide HTML Source View"},"common":{"buttonAdd":"Add","buttonInsert":"Insert","videoHeadLabel":"Insert video","htmlHeadLabel":"Insert HTML","htmlTextareaLabel":"Your html code:","videoTextareaLabel":"Embed your video code here:","linkTextLabel":"Text to display:","linkUrlLabel":"To what URL should this link go:","linkNewWindowLabel":"Open in new window"},"messages":{"imagesEmptyFields":"base+ws_image_empty_fields","linkEmptyFields":"Please fill `label` and `url` fields to insert the link","videoEmptyField":"Enter video code please"}},"buttonCode":"\n<span class=\"ow_button\"><span class=\" ow_ic_add mn_submit\"><input type=\"button\"  value=\"#label#\" class=\"ow_ic_add mn_submit\"  \/><\/span><\/span>","rtl":false}
+</script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/ow.js?5c0ea45a9ac2a"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/attachments.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/newsfeed/js/newsfeed.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/jquery.autosize.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/jquery.jscrollpane.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/mailbox/js/audio-player.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/htmlarea.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/notifications/notifications.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/friends/js/friend_request.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/console.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/underscore-min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/base/js/backbone-min.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/mailbox/js/mailbox.js"></script>
+<script type="text/javascript" src="http://127.0.0.1/oxwall/ow_static/plugins/mailbox/js/contactmanager.js"></script>
+<script type="text/javascript">
+(function() {;window["addNewPhoto5ce12efc86011"] = function()
+                    {
+                        var ajaxUploadPhotoFB = OW.ajaxFloatBox("PHOTO_CMP_AjaxUpload", [null, null, null, null, null], {
+                            title: "Upload photos",
+                            width: "746px"
+                        });
+
+                        ajaxUploadPhotoFB.bind("close", function()
+                        {
+                            if ( ajaxPhotoUploader.isHasData() )
+                            {
+                                if ( confirm("If you close the window - all data will be lost. Continue?") )
+                                {
+                                    OW.trigger("photo.onCloseUploaderFloatBox");
+                                    return true;
+                                }
+                                
+                                return false;
+                            }
+                            else
+                            {
+                                OW.trigger("photo.onCloseUploaderFloatBox");
+                            }
+                        });
+                    }})();
+</script>
+<script type="text/javascript">
+(function() {OW.ajaxComponentLoaderRsp = "http:\/\/127.0.0.1\/oxwall\/base\/ajax-loader\/component\/";
+OW.ajaxAttachmentLinkRsp = "http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-link\/";
+OW.getPing().setRspUrl("http:\/\/127.0.0.1\/oxwall\/base\/ping\/index\/");
+OW.Users = new OW_UsersApi({"rsp":"http:\/\/127.0.0.1\/oxwall\/base\/ajax-users-api\/rsp\/"});
+})();
+</script>
+<script type="text/javascript">
+(function() {OWMailbox.userDetails = {"userId":1,"displayName":"Admin","profileUrl":"http:\/\/127.0.0.1\/oxwall\/user\/admin","avatarUrl":"http:\/\/127.0.0.1\/oxwall\/ow_static\/themes\/simplicity\/images\/no-avatar.png"};
+ OWMailbox.documentTitle = "Oxwall - social networking";
+OWMailbox.soundEnabled = true;
+OWMailbox.showOnlineOnly = true;
+OWMailbox.showAllMembersMode = false;
+OWMailbox.soundSwfUrl = "http:\/\/127.0.0.1\/oxwall\/ow_static\/plugins\/mailbox\/js\/player.swf";
+OWMailbox.soundUrl = "http:\/\/127.0.0.1\/oxwall\/ow_static\/plugins\/mailbox\/sound\/receive.mp3";
+OWMailbox.defaultAvatarUrl = "http:\/\/127.0.0.1\/oxwall\/ow_static\/themes\/simplicity\/images\/no-avatar.png";
+OWMailbox.serverTimezoneOffset = -7;
+OWMailbox.useMilitaryTime = true;
+OWMailbox.getHistoryResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/get-history\/";
+OWMailbox.openDialogResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/update-user-info\/";
+OWMailbox.attachmentsSubmitUrl = "http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-file\/";
+OWMailbox.attachmentsDeleteUrl = "http:\/\/127.0.0.1\/oxwall\/base\/attachment\/delete-file\/";
+OWMailbox.authorizationResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/authorization\/";
+OWMailbox.responderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/mailbox\/responder\/";
+OWMailbox.userListUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/users";
+OWMailbox.convListUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/convs";
+OWMailbox.pingResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/ping\/";
+OWMailbox.settingsResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/settings\/";
+OWMailbox.userSearchResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/rsp\/";
+OWMailbox.bulkOptionsResponderUrl = "http:\/\/127.0.0.1\/oxwall\/mailbox\/ajax\/bulk-options\/";
+OWMailbox.pluginUpdateTimestamp = "0";
+OWMailbox.todayDate = "2019-05-19";
+OWMailbox.todayDateLabel = "Today";
+OWMailbox.chatModeEnabled = true;
+OWMailbox.useChat = "available";
+OWMailbox.mailModeEnabled = true;
+im_debug_mode = false;
+})();
+</script>
+<script type="text/javascript">
+$(function () {
+(function(_scope) {OW.registerLanguageKey('base', 'ajax_floatbox_users_title', "Users");})({});
+(function(_scope) {OW.registerLanguageKey('base', 'flag_as', "Flag this as...");})({});
+(function(_scope) {OW.registerLanguageKey('base', 'delete_user_confirmation_label', "Delete confirmation");})({});
+(function(_scope) {OW.registerLanguageKey('base', 'authorization_limited_permissions', "Limited permissions");})({});
+(function(_scope) {OW.registerLanguageKey('base', 'avatar_change', "Change Avatar");})({});
+(function(_scope) {OW.registerLanguageKey('base', 'avatar_crop', "Crop Avatar");})({});
+(function(_scope) {OW.registerLanguageKey('admin', 'edit_language', "Edit Language");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'find_contact', "Find Contact");})({});
+(function(_scope) {OW.registerLanguageKey('base', 'user_block_message', "Sorry, this user chooses not to interact with you");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'send_message_failed', "Failed to send message:");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'confirm_conversation_delete', "Are you sure?");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'silent_mode_off', "Silent mode: Off");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'silent_mode_on', "Silent mode: On");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'show_all_users', "Show all users");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'show_online_only', "Show only online users");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'new_message', "*** New Message ***");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'mail_subject_prefix', "Subject:\u00a0");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'chat_subject_prefix', "...");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'new_message_count', "{$count} new");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'chat_message_empty', "Message text is empty");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'text_message_invitation', "Text Message");})({});
+(function(_scope) {OW.registerLanguageKey('mailbox', 'close_new_message_window_confirmation', "Do you want to close the new message box?");})({});
+(function(_scope) { var form = new OwForm({"id":"form_wyjyk29e","name":"newsfeed_update_status","reset":false,"ajax":true,"ajaxDataType":"json","validateErrorMessage":"Please fill the form properly"});window.owForms[form.name] = form;
+			
+var formElement = new OwFormElement("input_ko7evy5o", "form_name");
+form.addElement(formElement);
+
+            var formElement = new OwFormElement("input_rojezy6e", "csrf_token");
+            formElement.resetValue = function(){};
+        
+form.addElement(formElement);
+var formElement = new OwTextArea("input_sedexyto", "status");
+form.addElement(formElement);
+var formElement = new OwFormElement("input_mib1vasi", "attachment");
+form.addElement(formElement);
+var formElement = new OwFormElement("input_b18u9ari", "feedType");
+form.addElement(formElement);
+var formElement = new OwFormElement("input_dosoz2r2", "feedId");
+form.addElement(formElement);
+var formElement = new OwFormElement("input_gi6usura", "visibility");
+form.addElement(formElement);
+
+
+			if ( form.form ) 
+			{
+    			$(form.form).bind( 'submit', {form:form},
+    					function(e){
+    						return e.data.form.submitForm();
+    					}
+    			);
+                        }
+                        
+                        OW.trigger('base.onFormReady.' + form.name, [], form);
+                        OW.trigger('base.onFormReady', [form]);
+		})({});
+(function(_scope) { var form = new OwForm({"id":"form_ym2s2r2t","name":"im_user_settings_form","reset":true,"ajax":null,"ajaxDataType":"json","validateErrorMessage":"Please fill the form properly"});window.owForms[form.name] = form;
+			
+var formElement = new OwFormElement("input_1badakub", "form_name");
+form.addElement(formElement);
+
+            var formElement = new OwFormElement("input_47yk264l", "csrf_token");
+            formElement.resetValue = function(){};
+        
+form.addElement(formElement);
+var formElement = new OwTextField("im_find_contact", "im_find_contact");
+form.addElement(formElement);
+var formElement = new OwFormElement("input_39a5u91l", "user_id");
+form.addElement(formElement);
+
+
+			if ( form.form ) 
+			{
+    			$(form.form).bind( 'submit', {form:form},
+    					function(e){
+    						return e.data.form.submitForm();
+    					}
+    			);
+                        }
+                        
+                        OW.trigger('base.onFormReady.' + form.name, [], form);
+                        OW.trigger('base.onFormReady', [form]);
+		})({});
+(function(_scope) { var form = new OwForm({"id":"mailbox-new-message-form","name":"mailbox-new-message-form","reset":false,"ajax":true,"ajaxDataType":"json","validateErrorMessage":""});window.owForms[form.name] = form;
+			
+var formElement = new OwFormElement("input_e7eje529", "form_name");
+form.addElement(formElement);
+
+            var formElement = new OwFormElement("input_ywym2mej", "csrf_token");
+            formElement.resetValue = function(){};
+        
+form.addElement(formElement);
+var formElement = new OwTextField("input_3b3bigip", "subject");formElement.addValidator({
+        	validate : function( value ){
+                if(  $.isArray(value) ){ if(value.length == 0  ) throw "Subject is empty"; return;}
+                else if( !value || $.trim(value).length == 0 ){ throw "Subject is empty"; }
+        },
+        	getErrorMessage : function(){ return "Subject is empty" }
+        });formElement.addValidator({
+            
+        	validate : function( value )
+        	{
+        		var self = this;
+        	
+        		// doesn't check empty values
+        		if( !value || $.trim( value ).length == 0 || ( $.isArray(value) && value.length == 0 ) )
+        		{
+        			return;
+        		}
+        		
+        		if( $.isArray(value) )
+        		{
+        			$.each( value,
+                        function( i, item )
+                        {
+                        	self.checkValue( item );
+                        } );
+        		}
+        		else
+        		{
+        			this.checkValue( value );
+        		}
+        	},
+    		
+        	getErrorMessage : function()
+        	{
+        		return "Ouch, that's a long text! Try to be a little more compact, under 2048 symbols."
+    		},
+        
+            checkValue : function( value )
+            {
+        
+            if( $.trim(value).length < 1 )
+            {
+            	throw "Ouch, that's a long text! Try to be a little more compact, under 2048 symbols.";
+            }
+           
+            if( $.trim(value).length > 2048 )
+            {
+            	throw "Ouch, that's a long text! Try to be a little more compact, under 2048 symbols.";
+            }
+           }
+    		});
+form.addElement(formElement);
+var formElement = new OwWysiwyg("input_1lukuviq", "message", false);            
+        formElement.addValidator({
+            
+        	validate : function( value )
+        	{
+        		var self = this;
+        	
+        		// doesn't check empty values
+        		if( !value || $.trim( value ).length == 0 || ( $.isArray(value) && value.length == 0 ) )
+        		{
+        			return;
+        		}
+        		
+        		if( $.isArray(value) )
+        		{
+        			$.each( value,
+                        function( i, item )
+                        {
+                        	self.checkValue( item );
+                        } );
+        		}
+        		else
+        		{
+        			this.checkValue( value );
+        		}
+        	},
+    		
+        	getErrorMessage : function()
+        	{
+        		return "This text can't be longer than 50000 symbols"
+    		},
+        
+            checkValue : function( value )
+            {
+        
+            if( $.trim(value).length < 0 )
+            {
+            	throw "This text can't be longer than 50000 symbols";
+            }
+           
+            if( $.trim(value).length > 50000 )
+            {
+            	throw "This text can't be longer than 50000 symbols";
+            }
+           }
+    		});formElement.addValidator({
+            
+        	validate : function( value )
+        	{
+        		var self = this;
+        	
+        		// doesn't check empty values
+        		if( !value || $.trim( value ).length == 0 || ( $.isArray(value) && value.length == 0 ) )
+        		{
+        			return;
+        		}
+        		
+        		if( $.isArray(value) )
+        		{
+        			$.each( value,
+                        function( i, item )
+                        {
+                        	self.checkValue( item );
+                        } );
+        		}
+        		else
+        		{
+        			this.checkValue( value );
+        		}
+        	},
+    		
+        	getErrorMessage : function()
+        	{
+        		return "Ouch, that's a long text! Try to be a little more compact, under 24000 symbols."
+    		},
+        
+            checkValue : function( value )
+            {
+        
+            if( $.trim(value).length < 1 )
+            {
+            	throw "Ouch, that's a long text! Try to be a little more compact, under 24000 symbols.";
+            }
+           
+            if( $.trim(value).length > 24000 )
+            {
+            	throw "Ouch, that's a long text! Try to be a little more compact, under 24000 symbols.";
+            }
+           }
+    		});formElement.addValidator({
+        	validate : function( value ){
+                    // process value
+                    value = value.replace(/\&nbsp;|&nbsp/ig,'');
+                    value = value.replace(/(<([^>]+)>)/ig,''); 
+
+                    if (!$.trim(value).length) {
+                        throw "Message text is empty";
+                    }
+        },
+        	getErrorMessage : function(){ return "Message text is empty" }
+        });
+form.addElement(formElement);
+var formElement = new MailboxUserField("input_ew49on27", "opponentId", "Write here...");formElement.addValidator({
+        	validate : function( value ){
+                if(  $.isArray(value) ){ if(value.length == 0  ) throw "Recipient is not selected"; return;}
+                else if( !value || $.trim(value).length == 0 ){ throw "Recipient is not selected"; }
+        },
+        	getErrorMessage : function(){ return "Recipient is not selected" }
+        });
+form.addElement(formElement);
+var formElement = new OwFormElement("input_36i5uq1v", "uid");
+form.addElement(formElement);
+
+
+			if ( form.form ) 
+			{
+    			$(form.form).bind( 'submit', {form:form},
+    					function(e){
+    						return e.data.form.submitForm();
+    					}
+    			);
+                        }
+                        
+                        OW.trigger('base.onFormReady.' + form.name, [], form);
+                        OW.trigger('base.onFormReady', [form]);
+		})({});
+(function(_scope) {
+            window.ow_newsfeed_const.LIKE_RSP = "http:\/\/127.0.0.1\/oxwall\/newsfeed\/ajax\/like\/";
+            window.ow_newsfeed_const.UNLIKE_RSP = "http:\/\/127.0.0.1\/oxwall\/newsfeed\/ajax\/unlike\/";
+            window.ow_newsfeed_const.DELETE_RSP = "http:\/\/127.0.0.1\/oxwall\/newsfeed\/ajax\/remove\/";
+            window.ow_newsfeed_const.LOAD_ITEM_RSP = "http:\/\/127.0.0.1\/oxwall\/newsfeed\/ajax\/load-item\/";
+            window.ow_newsfeed_const.LOAD_ITEM_LIST_RSP = "http:\/\/127.0.0.1\/oxwall\/newsfeed\/ajax\/load-item-list\/";
+            window.ow_newsfeed_const.REMOVE_ATTACHMENT = "http:\/\/127.0.0.1\/oxwall\/newsfeed\/ajax\/remove-attachment\/";
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"] = new NEWSFEED_Feed("feed1", {"data":{"feedType":"my","feedId":1,"feedAutoId":"feed1","startTime":1558261497,"displayType":"activity","customizeMode":false,"viewMore":true,"displayCount":10},"driver":{"class":"NEWSFEED_CLASS_UserDriver","params":{"offset":0,"length":"343","displayCount":10,"formats":null,"feedType":"my","feedId":1,"feedAutoId":"feed1","startTime":1558261497,"displayType":"action","customizeMode":false,"viewMore":true}}});
+            window.ow_newsfeed_feed_list["feed1"].totalItems = "343";
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.380"] = new NEWSFEED_FeedItem("action-feed1-386", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.380"].construct({"entityType":"user-status","entityId":"380","id":"386","updateStamp":1558261466,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.379"] = new NEWSFEED_FeedItem("action-feed1-385", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.379"].construct({"entityType":"user-status","entityId":"379","id":"385","updateStamp":1558261424,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.378"] = new NEWSFEED_FeedItem("action-feed1-384", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.378"].construct({"entityType":"user-status","entityId":"378","id":"384","updateStamp":1558261246,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.377"] = new NEWSFEED_FeedItem("action-feed1-383", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.377"].construct({"entityType":"user-status","entityId":"377","id":"383","updateStamp":1558261203,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.376"] = new NEWSFEED_FeedItem("action-feed1-382", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.376"].construct({"entityType":"user-status","entityId":"376","id":"382","updateStamp":1558261166,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.375"] = new NEWSFEED_FeedItem("action-feed1-381", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.375"].construct({"entityType":"user-status","entityId":"375","id":"381","updateStamp":1558261132,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.374"] = new NEWSFEED_FeedItem("action-feed1-380", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.374"].construct({"entityType":"user-status","entityId":"374","id":"380","updateStamp":1558261057,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.373"] = new NEWSFEED_FeedItem("action-feed1-379", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.373"].construct({"entityType":"user-status","entityId":"373","id":"379","updateStamp":1558261018,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.372"] = new NEWSFEED_FeedItem("action-feed1-378", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.372"].construct({"entityType":"user-status","entityId":"372","id":"378","updateStamp":1558260978,"likes":0,"comments":0,"cycle":{"lastItem":false},"displayType":"activity"});
+        })({});
+(function(_scope) {
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.371"] = new NEWSFEED_FeedItem("action-feed1-377", window.ow_newsfeed_feed_list["feed1"]);
+            window.ow_newsfeed_feed_list["feed1"].actions["user-status.371"].construct({"entityType":"user-status","entityId":"371","id":"377","updateStamp":1558195356,"likes":0,"comments":0,"cycle":{"lastItem":true},"displayType":"activity"});
+        })({});
+(function(_scope) {OW.Console = new OW_Console({"pingInterval":30000},{"console":{"time":1558261501},"invitation":{"counter":{"all":"0","new":"0"}},"notification":{"counter":{"all":"0","new":"0"}},"friend_requests":{"counter":{"all":"0","new":"0"}}});
+})({});
+(function(_scope) {OW.bindAutoClicks();OW.bindTips($('body'));OW.getPing().addCommand('user_activity_update').start(600000);})({});
+(function(_scope) {
+    DND_InterfaceFix.fix('.place_section');
+})({});
+(function(_scope) {
+            owForms["newsfeed_update_status"].bind( "submit", function( r )
+            {
+                $(".newsfeed-status-preloader", "#" + "feed1").show();
+            });
+
+            owForms["newsfeed_update_status"].bind( "success", function( r )
+            {
+                $(this.status).val("");
+                $(".newsfeed-status-preloader", "#" + "feed1").hide();
+
+                if ( r.error ) {
+                    OW.error(r.error); return;
+                }
+                
+                if ( r.message ) {
+                    OW.info(r.message);
+                }
+
+                if ( r.item )
+                {
+                    window.ow_newsfeed_feed_list["feed1"].loadNewItem(r.item, false);
+                }
+            });})({});
+(function(_scope) {OWLinkObserver.observeInput("input_sedexyto", function(link){
+            var ac = $("#attachment_preview_nfa-feed15ce12ef9c2233-oembed");
+            if ( ac.data("sleep") ) return;
+
+            ac.show().html("<div class=\"ow_preloader\" style=\"height: 30px;\"></div>");
+
+            this.requestResult(function( r )
+            {
+                ac.show().html(r);
+            });
+
+            this.onResult = function( r )
+            {
+                $("#input_mib1vasi").val(JSON.stringify(r));
+            };
+
+        });})({});
+(function(_scope) {window.owPhotoAttachment['nfa-feed15ce12ef9c2233'] =  new OWPhotoAttachment({"uid":"nfa-feed15ce12ef9c2233","previewId":"attch_preview_nfa-feed15ce12ef9c2233","buttonId":"nfa-feed15ce12ef9c2233-btn","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {var attUid = "nfa-feed15ce12ef9c2233", uidUniq = 0; owForms["newsfeed_update_status"].bind("success", function(data){
+                    OW.trigger("base.photo_attachment_reset", {pluginKey:"newsfeed", uid:attUid});
+                    owForms["newsfeed_update_status"].getElement("attachment").setValue("");
+                    OWLinkObserver.getObserver("input_sedexyto").resetObserver();
+                    $("#attachment_preview_" + "nfa-feed15ce12ef9c2233" + "-oembed").data("sleep", false).empty();
+                    
+                    var attOldUid = attUid;
+                    attUid = "nfa-feed15ce12ef9c2233" + (uidUniq++);
+                    OW.trigger("base.photo_attachment_uid_update", {
+                        uid: attOldUid,
+                        newUid: attUid
+                    });
+                });
+                owForms["newsfeed_update_status"].reset = false;
+                
+                OW.bind("base.add_photo_attachment_submit",
+                    function(data){
+                        if( data.uid == attUid ) {
+                            $("#attachment_preview_" + "nfa-feed15ce12ef9c2233" + "-oembed").hide().empty();
+                            $("#attachment_preview_" + "nfa-feed15ce12ef9c2233" + "-oembed").data("sleep", true);
+                        }
+                    }
+                );
+
+                
+                OW.bind("base.attachment_hide_button_cont",
+                    function(data){
+                        if( data.uid == attUid ) {
+                            $("#" + "nfa-feed15ce12ef9c2233" + "-btn-cont").hide();
+                        }
+                    }
+                );
+                
+                OW.bind("base.attachment_show_button_cont",
+                    function(data){
+                        if( data.uid == attUid ) {
+                            $("#" + "nfa-feed15ce12ef9c2233" + "-btn-cont").show();
+                        }
+                    }
+                );
+
+                OW.bind("base.attachment_added",
+                    function(data){
+                        if( data.uid == attUid ) {
+                            data.type = "photo";
+                            owForms["newsfeed_update_status"].getElement("attachment").setValue(JSON.stringify(data));
+                        }
+                    }
+                );
+
+                OW.bind("base.attachment_deleted",
+                    function(data){
+                        if( data.uid == attUid ){
+                            $("#attachment_preview_" + "nfa-feed15ce12ef9c2233" + "-oembed").data("sleep", false).empty();
+                            owForms["newsfeed_update_status"].getElement("attachment").setValue("");
+                            OWLinkObserver.getObserver("input_sedexyto").resetObserver();
+                        }
+                    }
+                );})({});
+(function(_scope) {window.owPhotoAttachment['user-status_380_lak3bad3'] =  new OWPhotoAttachment({"uid":"user-status_380_lak3bad3","previewId":"attch_preview_user-status_380_lak3bad3","buttonId":"bCcontuser-status3803367","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":380,"pluginKey":"newsfeed","contextId":"comments-user-status3803367","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3803367","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3803367","attchId":"attchuser-status3803367","attchUid":"user-status_380_lak3bad3","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.staticData={"respondUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/get-comment-list\/","delUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/delete-comment\/","delAtchUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/delete-comment-atatchment\/","delConfirmMsg":"Are you sure you want to delete comment?","preloaderImgUrl":"http:\/\/127.0.0.1\/oxwall\/ow_static\/themes\/simplicity\/images\/ajax_preloader_button.gif"};})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3803367'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3803367","displayType":30,"entityType":"user-status","entityId":380,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3803367","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3803367'].init();})({});
+(function(_scope) {$(document).on("hover", ".ow_context_action",function(e) {
+                        if (e.type == "mouseenter") {
+                            $(this).find(".ow_tooltip").css({opacity: 0, top: 10}).show().stop(true, true).animate({top: 18, opacity: 1}, "fast"); 
+                        }
+                        else { // mouseleave
+                            $(this).find(".ow_tooltip").hide();  
+                        }     
+                    }
+                );})({});
+(function(_scope) {window.owPhotoAttachment['user-status_379_k4je6eke'] =  new OWPhotoAttachment({"uid":"user-status_379_k4je6eke","previewId":"attch_preview_user-status_379_k4je6eke","buttonId":"bCcontuser-status3793367","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":379,"pluginKey":"newsfeed","contextId":"comments-user-status3793367","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3793367","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3793367","attchId":"attchuser-status3793367","attchUid":"user-status_379_k4je6eke","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3793367'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3793367","displayType":30,"entityType":"user-status","entityId":379,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3793367","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3793367'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_378_l1b181sa'] =  new OWPhotoAttachment({"uid":"user-status_378_l1b181sa","previewId":"attch_preview_user-status_378_l1b181sa","buttonId":"bCcontuser-status3783367","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":378,"pluginKey":"newsfeed","contextId":"comments-user-status3783367","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3783367","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3783367","attchId":"attchuser-status3783367","attchUid":"user-status_378_l1b181sa","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3783367'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3783367","displayType":30,"entityType":"user-status","entityId":378,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3783367","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3783367'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_377_kizipabu'] =  new OWPhotoAttachment({"uid":"user-status_377_kizipabu","previewId":"attch_preview_user-status_377_kizipabu","buttonId":"bCcontuser-status3773367","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":377,"pluginKey":"newsfeed","contextId":"comments-user-status3773367","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3773367","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3773367","attchId":"attchuser-status3773367","attchUid":"user-status_377_kizipabu","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3773367'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3773367","displayType":30,"entityType":"user-status","entityId":377,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3773367","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3773367'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_376_siq3519a'] =  new OWPhotoAttachment({"uid":"user-status_376_siq3519a","previewId":"attch_preview_user-status_376_siq3519a","buttonId":"bCcontuser-status3763367","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":376,"pluginKey":"newsfeed","contextId":"comments-user-status3763367","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3763367","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3763367","attchId":"attchuser-status3763367","attchUid":"user-status_376_siq3519a","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3763367'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3763367","displayType":30,"entityType":"user-status","entityId":376,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3763367","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3763367'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_375_r3w1sisu'] =  new OWPhotoAttachment({"uid":"user-status_375_r3w1sisu","previewId":"attch_preview_user-status_375_r3w1sisu","buttonId":"bCcontuser-status3753367","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":375,"pluginKey":"newsfeed","contextId":"comments-user-status3753367","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3753367","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3753367","attchId":"attchuser-status3753367","attchUid":"user-status_375_r3w1sisu","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3753367'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3753367","displayType":30,"entityType":"user-status","entityId":375,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3753367","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3753367'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_374_3l1w3tu8'] =  new OWPhotoAttachment({"uid":"user-status_374_3l1w3tu8","previewId":"attch_preview_user-status_374_3l1w3tu8","buttonId":"bCcontuser-status3749494","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":374,"pluginKey":"newsfeed","contextId":"comments-user-status3749494","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3749494","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3749494","attchId":"attchuser-status3749494","attchUid":"user-status_374_3l1w3tu8","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3749494'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3749494","displayType":30,"entityType":"user-status","entityId":374,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3749494","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3749494'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_373_2zod474r'] =  new OWPhotoAttachment({"uid":"user-status_373_2zod474r","previewId":"attch_preview_user-status_373_2zod474r","buttonId":"bCcontuser-status3739494","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":373,"pluginKey":"newsfeed","contextId":"comments-user-status3739494","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3739494","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3739494","attchId":"attchuser-status3739494","attchUid":"user-status_373_2zod474r","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3739494'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3739494","displayType":30,"entityType":"user-status","entityId":373,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3739494","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3739494'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_372_4syryqyv'] =  new OWPhotoAttachment({"uid":"user-status_372_4syryqyv","previewId":"attch_preview_user-status_372_4syryqyv","buttonId":"bCcontuser-status3729494","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":372,"pluginKey":"newsfeed","contextId":"comments-user-status3729494","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3729494","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3729494","attchId":"attchuser-status3729494","attchUid":"user-status_372_4syryqyv","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3729494'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3729494","displayType":30,"entityType":"user-status","entityId":372,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3729494","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3729494'].init();})({});
+(function(_scope) {window.owPhotoAttachment['user-status_371_49oz4keb'] =  new OWPhotoAttachment({"uid":"user-status_371_49oz4keb","previewId":"attch_preview_user-status_371_49oz4keb","buttonId":"bCcontuser-status3719494","pluginKey":"newsfeed","addPhotoUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-photo\/","langs":{"attchLabel":"attachment"}});})({});
+(function(_scope) {new OwComments({"entityType":"user-status","entityId":371,"pluginKey":"newsfeed","contextId":"comments-user-status3719494","userAuthorized":true,"customId":null,"ownerId":1,"cCount":"3","initialCount":3,"loadMoreCount":6,"countOnPage":10,"uid":"user-status3719494","addUrl":"http:\/\/127.0.0.1\/oxwall\/base\/comments\/add-comment\/","displayType":30,"textAreaId":"ctauser-status3719494","attchId":"attchuser-status3719494","attchUid":"user-status_371_49oz4keb","enableSubmit":true,"mediaAllowed":true,"labels":{"emptyCommentMsg":"Empty comment","disabledSubmit":"base+submit_disabled_error_msg","attachmentLoading":"Photo is still uploading"}});})({});
+(function(_scope) {window.owCommentListCmps.items['user-status3719494'] = new OwCommentsList({"totalCount":0,"contextId":"comments-list-user-status3719494","displayType":30,"entityType":"user-status","entityId":371,"pagesCount":0,"initialCount":3,"loadMoreCount":6,"commentIds":[],"pages":false,"pluginKey":"newsfeed","ownerId":1,"commentCountOnPage":10,"cid":"user-status3719494","actionArray":{"comments":[],"users":[]},"countToLoad":0});
+            window.owCommentListCmps.items['user-status3719494'].init();})({});
+(function(_scope) { $("#welcomeWinget_loadAvatarChangeCmp").click(function(){document.avatarFloatBox = OW.ajaxFloatBox("BASE_CMP_AvatarChange", [], {width: 749, title: "Change Avatar"});});})({});
+(function(_scope) {$.get("http:\/\/127.0.0.1\/oxwall\/ow_cron\/run.php?ow-light-cron=1");})({});
+(function(_scope) {owFileAttachments['mailbox_new_message_elyqomo9'] = new OWFileAttachment({"uid":"mailbox_new_message_elyqomo9","submitUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/add-file\/","deleteUrl":"http:\/\/127.0.0.1\/oxwall\/base\/attachment\/delete-file\/","showPreview":true,"selector":"#newMessageWindowAttachmentsBtn","pluginKey":"mailbox","multiple":true,"lItems":[]});})({});
+(function(_scope) {
+            $('#input_1lukuviq').get(0).htmlarea = function(){ $(this).htmlarea( {"toolbar":["bold","italic","underline","link","orderedlist","unorderedlist"],"size":170,"customClass":"mailbox"} );};
+            $('#input_1lukuviq').get(0).htmlareaFocus = function(){this.jhtmlareaObject.iframe[0].contentWindow.focus();};
+            $('#input_1lukuviq').get(0).htmlareaRefresh = function(){if(this.jhtmlareaObject){this.jhtmlareaObject.dispose();$(this).htmlarea( {"toolbar":["bold","italic","underline","link","orderedlist","unorderedlist"],"size":170,"customClass":"mailbox"} );}};
+        })({});
+(function(_scope) {$('#input_1lukuviq').htmlarea( {"toolbar":["bold","italic","underline","link","orderedlist","unorderedlist"],"size":170,"customClass":"mailbox"} );})({});
+(function(_scope) {OW.Console.addItem(new OW_ConsoleDropdownHover("console_item_5ce12efc9f00d", "console_item_5ce12efc9f00d_content"), "console_item_5ce12efc9f00d");
+})({});
+(function(_scope) {OW.Console.addItem(new OW_ConsoleDropdownHover("console_item_5ce12efca0901", "console_item_5ce12efca0901_content"), "my_profile_console_item");
+})({});
+(function(_scope) {OW.Console.addItem(new OW_ConsoleDropdownList("console_item_5ce12efca47df", "console_item_5ce12efca47df_content"), "invitation");
+})({});
+(function(_scope) {$.extend(OW.Console.getItem("invitation"), OW_ConsoleList).construct({"rsp":"http:\/\/127.0.0.1\/oxwall\/base\/console\/list-rsp\/","key":"invitation"});})({});
+(function(_scope) {OW.Invitation = new OW_Invitation("invitation", {"rsp":"http:\/\/127.0.0.1\/oxwall\/base\/invitation\/ajax\/"});
+})({});
+(function(_scope) {OW.Console.addItem(new OW_ConsoleDropdownList("console_item_5ce12efca6c77", "console_item_5ce12efca6c77_content"), "mailbox");
+})({});
+(function(_scope) {$.extend(OW.Console.getItem("mailbox"), OW_ConsoleList).construct({"rsp":"http:\/\/127.0.0.1\/oxwall\/base\/console\/list-rsp\/","key":"mailbox"});})({});
+(function(_scope) {OW.MailboxConsole = new OW_MailboxConsole("mailbox", {"issetMails":false});
+})({});
+(function(_scope) {OW.Console.addItem(new OW_ConsoleDropdownList("console_item_5ce12efcd7f91", "console_item_5ce12efcd7f91_content"), "notification");
+})({});
+(function(_scope) {$.extend(OW.Console.getItem("notification"), OW_ConsoleList).construct({"rsp":"http:\/\/127.0.0.1\/oxwall\/base\/console\/list-rsp\/","key":"notification"});})({});
+(function(_scope) {OW.Notification = new OW_Notification("notification");
+})({});
+(function(_scope) {OW.Console.addItem(new OW_ConsoleDropdownList("console_item_5ce12efcd9390", "console_item_5ce12efcd9390_content"), "friend_requests");
+})({});
+(function(_scope) {$.extend(OW.Console.getItem("friend_requests"), OW_ConsoleList).construct({"rsp":"http:\/\/127.0.0.1\/oxwall\/base\/console\/list-rsp\/","key":"friend_requests"});})({});
+(function(_scope) {OW.FriendRequest = new OW_FriendRequest("friend_requests", {"rsp":"http:\/\/127.0.0.1\/oxwall\/friends\/action\/ajax\/"});
+})({});
+(function(_scope) {var menu = new OW.ResponsiveMenu("rm-5ce12efd0f801");
+})({});
+(function(_scope) {OW.Mailbox = new OWMailbox.Application({"pingInterval":5000,"lastMessageTimestamp":0});})({});
+(function(_scope) {
+        var newMessageFormModel = new OWMailbox.NewMessageForm.Model();
+        OW.Mailbox.newMessageFormController = new OWMailbox.NewMessageForm.Controller(newMessageFormModel);
+
+        OW.bind('mailbox.application_started', function(){
+            OWMailbox.NewMessageForm.restoreForm();
+        });
+
+        owForms['mailbox-new-message-form'].bind( 'success',
+        function( json )
+        {
+            var from = $('#mailbox-new-message-form');
+
+            if ( json.result == 'permission_denied' )
+            {
+                if ( json.message != undefined )
+                {
+                    OW.error(json.message);
+                }
+                else
+                {
+                    OW.error("You do not have enough permissions to write  messages.");
+                }
+            }
+            else if ( json.result == true )
+            {
+                var attUid = $(owForms['mailbox-new-message-form'].elements.uid.input).val();
+                var newUid = OWMailbox.uniqueId('mailbox_new_message_');
+                OW.trigger('base.file_attachment', { 'uid': attUid, 'newUid': newUid });
+
+                OW.Mailbox.lastMessageTimestamp = json.lastMessageTimestamp;
+
+                owForms['mailbox-new-message-form'].resetForm();
+
+                $(owForms['mailbox-new-message-form'].elements.uid.input).val(newUid);
+
+                OW.trigger('mailbox.close_new_message_form');
+
+                OW.info(json.message || 'Message sent');
+            }
+            else
+            {
+                OW.error(json.error);
+            }
+        } ); })({});
+(function(_scope) {
+        OW.Mailbox.contactManager = new MAILBOX_ContactManager;
+        OW.Mailbox.contactManagerView = new MAILBOX_ContactManagerView({model: OW.Mailbox.contactManager});})({});
+
+});
+</script>
+
+
+
+<div class="ow_message_cont"></div></body></html>
