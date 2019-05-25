@@ -68,7 +68,7 @@ class SignInPage(BasePage):
                         "Login background is still visible")
         return DashboardPage(self.driver)
 
-    @allure.step('when I input {user.password} password ')
+    @allure.step('when I input {password} password ')
     def input_password(self, user):
         # Input password
         passwd_field = self.find_element(self.PASSWORD_INPUT)

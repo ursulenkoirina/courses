@@ -13,8 +13,8 @@ def test_login(app, user):                     # TODO: post-condition - logout
     # sing_in_page = SignInPage(driver)
     assert app.sign_in_page.is_this_page()
 
-    app.sign_in_page.input_username(user)
-    app.sign_in_page.input_password(user)
+    app.sign_in_page.input_username(user.username)
+    app.sign_in_page.input_password(user.password)
     app.sign_in_page.sign_in_click()  # !!!! Добавила явное ожидание в этот метод, что затемнение исчезло, чтоб пофиксить багу
     # dashboard_page = DashboardPage(driver)
     assert app.dashboard_page.active_menu.text == "DASHBOARD"
