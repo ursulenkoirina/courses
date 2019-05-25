@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from custom_expected_condition import presence_of_num_elements
 from pages.elements import InputTextElement, StatusBlock
+import allure
 
 class OxwallApp:
     def __init__(self, driver, base_url="http://127.0.0.1/oxwall/"):
@@ -55,6 +56,7 @@ class SignInPage(BasePage):
     LOGIN_BACKGROUND = (By.ID, "floatbox_overlay")
     # TODO: extract locators for other elements
 
+    @allure.step('Then Sign In window is opened')
     def is_this_page(self):
         return self.is_element_present(self.LOGIN_WINDOW_BOX)
 
@@ -66,15 +68,17 @@ class SignInPage(BasePage):
                         "Login background is still visible")
         return DashboardPage(self.driver)
 
+    @allure.step('when I input {user.password} password ')
     def input_password(self, user):
         # Input password
         passwd_field = self.find_element(self.PASSWORD_INPUT)
         passwd_field.send_keys(user.password)
-
+    @allure.step('when I input {user} username ')
     def input_username(self, user):
         # Input username
         username_field = self.find_element(self.USERNAME_INPUT)
         username_field.send_keys(user.username)
+
 
 
 class InternalPage(BasePage):
@@ -92,7 +96,7 @@ class InternalPage(BasePage):
         sign_in_page.input_password(user)
         dashboard_page = sign_in_page.sign_in_click()
         return dashboard_page
-
+    @allure.step('When i click at Sign Menu')
     def sign_in_click(self):
         # Initialize login(click Sign in button)
         buttons = self.driver.find_elements(*self.RIGHT_MENU_ELEMENTS)
