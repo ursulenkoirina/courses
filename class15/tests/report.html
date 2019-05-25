@@ -235,7 +235,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 25-May-2019 at 15:48:22 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v1.20.0</p>
+    <p>Report generated on 25-May-2019 at 16:42:40 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v1.20.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -260,8 +260,8 @@ function filter_table(elem) {
         <td>Python</td>
         <td>3.6.5</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 29.30 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">1 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>2 tests ran in 35.88 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">2 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -272,21 +272,21 @@ function filter_table(elem) {
           <th>Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="error results-table-row">
-        <tr>
-          <td class="col-result">Error</td>
-          <td class="col-name">tests/test_login.py::test_login[{&apos;username&apos;: &apos;tester12&apos;, &apos;password&apos;: &apos;secret&apos;, &apos;real_name&apos;: &apos;How I am?&apos;, &apos;email&apos;: &apos;test123@test.com&apos;, &apos;is_admin&apos;: False}]::setup</td>
-          <td class="col-duration">3.94</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">..\conftest.py:45: in app<br/>    driver.get(base_url)<br/>C:\Users\Irina\PycharmProjects\Labs\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:333: in get<br/>    self.execute(Command.GET, {&#x27;url&#x27;: url})<br/>C:\Users\Irina\PycharmProjects\Labs\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:321: in execute<br/>    self.error_handler.check_response(response)<br/>C:\Users\Irina\PycharmProjects\Labs\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py:242: in check_response<br/>    raise exception_class(message, screen, stacktrace)<br/><span class="error">E   selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status</span><br/><span class="error">E   from unknown error: cannot determine loading status</span><br/><span class="error">E   from disconnected: received Inspector.detached event</span><br/><span class="error">E     (Session info: chrome=74.0.3729.169)</span><br/><span class="error">E     (Driver info: chromedriver=74.0.3729.6 (255758eccf3d244491b8a1317aa76e1ce10d57e9-refs/branch-heads/3729@{#29}),platform=Windows NT 10.0.17134 x86_64)</span><br/></div></td></tr></tbody>
       <tbody class="failed results-table-row">
         <tr>
           <td class="col-result">Failed</td>
           <td class="col-name">tests/test_login.py::test_login[{&apos;username&apos;: &apos;test12&apos;, &apos;password&apos;: &apos;pass&apos;, &apos;real_name&apos;: &apos;TEST&apos;, &apos;email&apos;: &apos;test1223@test.com&apos;, &apos;is_admin&apos;: True}]</td>
-          <td class="col-duration">11.28</td>
+          <td class="col-duration">10.88</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log">test_login.py:13: in test_login<br/>    app.sign_in_page.sign_in_click()  # !!!! Добавила явное ожидание в этот метод, что затемнение исчезло, чтоб пофиксить багу<br/>..\pages\pages.py:66: in sign_in_click<br/>    &quot;Login background is still visible&quot;)<br/>C:\Users\Irina\PycharmProjects\Labs\venv\lib\site-packages\selenium\webdriver\support\wait.py:80: in until<br/>    raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E   selenium.common.exceptions.TimeoutException: Message: Login background is still visible</span><br/></div></td></tr></tbody></table></body></html>
+            <div class="log">test_login.py:13: in test_login<br/>    app.sign_in_page.sign_in_click()  # !!!! Добавила явное ожидание в этот метод, что затемнение исчезло, чтоб пофиксить багу<br/>..\pages\pages.py:66: in sign_in_click<br/>    &quot;Login background is still visible&quot;)<br/>C:\Users\Irina\PycharmProjects\Labs\venv\lib\site-packages\selenium\webdriver\support\wait.py:80: in until<br/>    raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E   selenium.common.exceptions.TimeoutException: Message: Login background is still visible</span><br/></div></td></tr></tbody>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">tests/test_login.py::test_login[{&apos;username&apos;: &apos;tester12&apos;, &apos;password&apos;: &apos;secret&apos;, &apos;real_name&apos;: &apos;How I am?&apos;, &apos;email&apos;: &apos;test123@test.com&apos;, &apos;is_admin&apos;: False}]</td>
+          <td class="col-duration">6.30</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">test_login.py:15: in test_login<br/>    assert app.dashboard_page.active_menu.text == &quot;DASHBOARD&quot;<br/><span class="error">E   AssertionError: assert &#x27;MAIN&#x27; == &#x27;DASHBOARD&#x27;</span><br/><span class="error">E     - MAIN</span><br/><span class="error">E     + DASHBOARD</span><br/></div></td></tr></tbody></table></body></html>
